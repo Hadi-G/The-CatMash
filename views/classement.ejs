@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CatMash</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+  </head>
+  <body id='body'>
+    <h1 id='demo'>CatMash Classement</h1>
+
+      <img id='number1' src='<%=cats[0].url%>'/>
+      <img id='number2' src='<%=cats[1].url%>'/>
+      <img id='number3' src='<%=cats[2].url%>'/>
+
+      <% for(let i=3; i<cats.length-3;i++){
+        %>
+        <img src='<%=cats[i].url%>'/>
+        <%
+      }
+      %>
+
+  </body>
+
+  <script src="./app2.js"></script>
+</html>

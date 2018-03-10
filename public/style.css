@@ -1,0 +1,12 @@
+.box{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.sizePicture{
+  width: calc(5% - 2rem);
+  height: 5%;
+  min-width: 400px;
+  margin-bottom: 10%;
+}
