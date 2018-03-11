@@ -1,30 +1,35 @@
-/* .box{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.sizePicture{
-  width: calc(5% - 2rem);
-  height: 5%;
-  min-width: 400px;
-  margin-bottom: 10%;
-} */
 
 body {
   background-image: url('https://res.cloudinary.com/teepublic/image/private/s--rGKK-8DZ--/t_Preview/b_rgb:ffffff,c_limit,f_auto,h_313,q_90,w_313/v1446164041/production/designs/76106_0'), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbKPbwrHlRKhTrN-EZzPMhcTBCrrzHiD5wsAziXh_ACQ8IHn2pKg'), url('./image/reservoircats.png'), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbKPbwrHlRKhTrN-EZzPMhcTBCrrzHiD5wsAziXh_ACQ8IHn2pKg');
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
   background-position: bottom right, top left, bottom left, top right;
-  background-attachment: fixed, fixed, fixed, fixed;
+  background-attachment:local,local,local,local;
   background-size: auto, auto, 300px, auto;
+}
+
+header{
+  float: none;
 }
 
 h1{
   font-familY: "ReservoirGrunge";
-  /* float: left; */
 }
 
-#ranking{
+h2{
+  font-familY: "ReservoirGrunge";
+  text-align: center;
+  clear: both;
+  margin-top: 10%;
+  background-image: url("./image/reservoircats2.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment:local;
+  background-size: 100px;
+  width:100%;
+  height: 150px;
+}
+
+#catmash{
   font-familY: "ReservoirGrunge";
   text-decoration: none;
   color:black;
@@ -32,20 +37,63 @@ h1{
   margin-right: 5%;
 }
 
-/* button{
-  float:right;
-  margin-right: 5%;
-  margin-top: 5%;
-} */
+.champion{
+ margin-top: 5%;
+}
 
-/* creation du style POLAROID */
+.champion a {
+background: white;
+	display:inline;
+	float: left;
+	margin: 0 15px 30px;
+	padding: 10px 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	-webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 4px 6px rgba(0,0,0,.3);
+	box-shadow: 0 4px 6px rgba(0,0,0,.3);
+	-webkit-transition: all .15s linear;
+	-moz-transition: all .15s linear;
+	transition: all .15s linear;
+	z-index:0;
+  position:relative;
+
+}
+
+.champion a:after {
+	color: #333;
+	font-size: 20px;
+	content: attr(title);
+	position:relative;
+	top:15px;
+}
+
+.champion img {
+	display: block;
+	width: inherit;
+  max-width: 500px ;
+}
+
+
+#number1{
+  width: 500px;
+}
+
+#number2{
+  width: 400px;
+}
+
+#number3{
+  width: 300px;
+}
+
+/*  Creation du style POLAROID  */
 
 .box {
   margin-left: auto;
   margin-right: auto;
-  width: 1000px; /* largeur obligatoire pour être centré */
+  width: 1000px;
 }
-
 
 .box a {
 background: white;
@@ -76,7 +124,7 @@ background: white;
 .box img {
 	display: block;
 	width: inherit;
-  max-width: 400px ;
+  max-width: 200px ;
 }
 
 .box a:nth-child(2n)

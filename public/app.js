@@ -4,7 +4,7 @@ let cat2 = document.getElementById('cat2');
 
 //creation d'une fonction generant une requete ajax vers le back-extended
 //la fonctionalité location.reload() permet de raffraichir la page et de relancer la selection aleatoire de chat
-function clickCat(){
+function clickCat(event){
 
   fetch('http://localhost:8080/catselection',
     {
@@ -14,7 +14,9 @@ function clickCat(){
             },
       body: 'selection='+this.dataset.id
     });
+
     location.reload();
+
 }
 
 //Generation d'evenement au click faisant appel a la fonction et a l'envoie de l'Id en requete ajax

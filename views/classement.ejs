@@ -4,21 +4,43 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CatMash</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style2.css">
   </head>
   <body id='body'>
-    <h1 id='demo'>CatMash Classement</h1>
 
-      <img id='number1' src='<%=cats[0].url%>'/>
-      <img id='number2' src='<%=cats[1].url%>'/>
-      <img id='number3' src='<%=cats[2].url%>'/>
+    <header>
+      <h1 id='demo'>CatMash Ranking</h1>
+      <a href='/' id='catmash'>The CatMash</a>
+    </header>
 
-      <% for(let i=3; i<cats.length-3;i++){
+    <br />
+    <br />
+
+    <div class='champion'>
+      <a href'' title='Number 2 - score : <%=cats[1].score%>'><img id='number2'  src='<%=cats[1].url%>'/></a>
+      <a href'' title='The Champion - score : <%=cats[0].score%>'><img id='number1'  src='<%=cats[0].url%>'/></a>
+      <a href'' title='Number 3 - score : <%=cats[2].score%>'><img id='number3'  src='<%=cats[2].url%>'/></a>
+    </div>
+
+    <br />
+    <br />
+
+    <h2>The wall of Fame</h2>
+
+    <br />
+    <br />
+
+      <div class='box'>
+
+        <% for(let i=3; i<cats.length-3;i++){
+          let j=i+1;
+          %>
+          <a title='Number <%=j%> - score : <%=cats[i].score%>'><img src='<%=cats[i].url%>'/></a>
+          <%
+        }
         %>
-        <img src='<%=cats[i].url%>'/>
-        <%
-      }
-      %>
+
+      </div>
 
   </body>
 
