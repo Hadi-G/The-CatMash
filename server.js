@@ -2,6 +2,8 @@ const express  = require('express');
 const app = express();
 let data = require('./data');
 const bodyParser = require('body-parser');
+//utilisation de l'aglorithme de classement ELO - cf. https://www.npmjs.com/package/elo-rank
+const EloRank = require('elo-rank');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
@@ -9,8 +11,8 @@ app.set('view engine', 'ejs');
 
 //initialisation des variables
 var selectedCats = [];
-let formerCat1;
-let formerCat2;
+let formerCat1 ='';
+let formerCat2='';
 let cat1;
 let cat2;
 
@@ -23,11 +25,12 @@ function randomCat(){
 function selectCat(){
   cat1 = data.cats[randomCat()];
   cat2 = data.cats[randomCat()];
+  return differentCat();
 }
 
 //fonction visant à s'assrurer de ne pas avoir 2 chats identitique ou le même duel de chat
 function differentCat(){
-  if(cat1 == cat2 && cat1 == formerCat1 || cat1 == cat2 && cat1 == formerCat2){
+  if(cat1 == cat2 || cat1 == cat2 && cat1 == formerCat1 || cat1 == cat2 && cat1 == formerCat2){
     cat1 = data.cats[randomCat()];
     return differentCat();
   }
@@ -36,8 +39,7 @@ function differentCat(){
 //home - route principale
 app.get('/', (req, res) => {
 
-  selectCat()
-  differentCat();
+  selectCat();
 
   //variable qui stock les chats selectionnés aleatoirement afin de les renvoyer vers le front
   selectedCats = [cat1, cat2];
@@ -51,23 +53,45 @@ app.get('/', (req, res) => {
 //route avec POST pour récuperer la requete ajax du front contenant l'id du chat vainqueur du duel
 app.post('/catselection', (req, res) => {
 
-//boucle 'for' visant ajouter +1 au score du chat vainqueur
+  //declaration d'une nouvelle instance de EloRank
+  let elo = new EloRank(15);
+
+  //creation de variables pour les besoins de l'algorithme de ranking
+  let catA = cat1.score;
+  let catB = cat2.score;
+
+  //Gets expected score for first parameter
+  let expectedScoreA = elo.getExpected(catA, catB);
+  let expectedScoreB = elo.getExpected(catB, catA);
+
+  if(cat1.id == req.body.selection){
+    catA = elo.updateRating(expectedScoreA, 1, catA);
+    catB = elo.updateRating(expectedScoreB, 0, catB);
+  } else {
+    catA = elo.updateRating(expectedScoreA, 0, catA);
+    catB = elo.updateRating(expectedScoreB, 1, catB);
+  }
+
+  //boucle 'for' visant ajouter +1 au score du chat vainqueur
   for(var i=0; i<data.cats.length; i++){
-    if(data.cats[i].id == req.body.selection){
-      data.cats[i].score += 1;
-      break;
+    if(data.cats[i].id == cat1.id){
+      data.cats[i].score = catA;
+    }
+    if(data.cats[i].id == cat2.id){
+      data.cats[i].score = catB;
     }
   }
   res.render('index', {cats:selectedCats});
 });
 
 app.get('/classement', (req, res) => {
+  //tri des chats en fonction du score (du plus élevé au moins élevé) et transfert des informations vers la page "classement"
   let catList = data.cats.sort(function(a, b){
   return b.score - a.score;
   });
   res.render('classement', {cats : catList});
+  // res.json(catList);
 });
-
 
 app.get('/classementdata', (req, res) => {
   res.json(data.cats);

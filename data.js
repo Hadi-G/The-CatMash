@@ -403,12 +403,12 @@ const jsonCats = [
   }
 ];
 
-//methode .map() pour ajouter la propriete score initialisé à 0
+//methode .map() pour ajouter la propriete score initialisé à 0, map() retourne un nouveau tableau
 let cats = jsonCats.map(x => {
   let catObj = {};
   catObj.url = x.url;
   catObj.id = x.id;
-  catObj.score = 0;
+  catObj.score = 1000;
   return catObj;
 });
 

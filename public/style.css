@@ -32,11 +32,14 @@ h1{
   margin-right: 5%;
 }
 
-/* button{
-  float:right;
+#skip{
+  font-familY: "ReservoirGrunge";
+  text-decoration: none;
+  color:black;
+  float: right;
   margin-right: 5%;
-  margin-top: 5%;
-} */
+  margin-top: 10%;
+}
 
 /* creation du style POLAROID */
 

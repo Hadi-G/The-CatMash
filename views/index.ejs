@@ -10,12 +10,18 @@
 
   <body>
     <h1 id='demo'>The CatMash</h1>
-    <a href='/classement' id='ranking'>Ranking</a>
+    <a href='/classement' id='ranking' class='btn'>Ranking</a>
+
       <div class='box'>
-        <a title='Miaouuuu'><img id='cat1' class='sizePicture' src='<%=cats[0].url%>' data-id='<%=cats[0].id%>'></img></a>
+        <a title='Miaou for me !!!!'><img id='cat1' class='sizePicture' src='<%=cats[0].url%>' data-id='<%=cats[0].id%>' data-score='<%=cats[0].score%>'></img></a>
           <!-- <br /> -->
-        <a title='MIMIMIaaaaaouuuu'><img id='cat2' class='sizePicture' src='<%=cats[1].url%>' data-id='<%=cats[1].id%>'></img></a>
+        <a title='Miiiiiiiaaaaaouuuuu !'><img id='cat2' class='sizePicture' src='<%=cats[1].url%>' data-id='<%=cats[1].id%>' data-score='<%=cats[1].score%>'></img></a>
       </div>
+    <br />
+
+      <a href='/' id='skip' class='btn'>Skip</a>
+
+
 
   </body>
   <script src="./app.js"></script>

@@ -1,6 +1,8 @@
 //recuperation des balises html contenant les images de chats dans index.ejs
 let cat1 = document.getElementById('cat1');
 let cat2 = document.getElementById('cat2');
+let skip = document.getElementById('skip');
+
 
 //creation d'une fonction generant une requete ajax vers le back-extended
 //la fonctionalité location.reload() permet de raffraichir la page et de relancer la selection aleatoire de chat
@@ -16,7 +18,6 @@ function clickCat(event){
     });
 
     location.reload();
-
 }
 
 //Generation d'evenement au click faisant appel a la fonction et a l'envoie de l'Id en requete ajax
