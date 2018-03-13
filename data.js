@@ -1,5 +1,5 @@
 
-//copie en dur des informations fourni par l'atelier.co
+//copie en dur des informations fourni par l'atelier.co src=https://latelier.co/data/cats.json
 const jsonCats = [
   {
       "url": "http://24.media.tumblr.com/tumblr_m82woaL5AD1rro1o5o1_1280.jpg",
@@ -403,7 +403,7 @@ const jsonCats = [
   }
 ];
 
-//methode .map() pour ajouter la propriete score initialisé à 0, map() retourne un nouveau tableau
+//methode .map() pour ajouter la propriete score initialisé à 1000, map() retourne un nouveau tableau
 let cats = jsonCats.map(x => {
   let catObj = {};
   catObj.url = x.url;
@@ -412,4 +412,5 @@ let cats = jsonCats.map(x => {
   return catObj;
 });
 
+//export de la variable 'cats' pour la rendre accessible dans le fichier d'entrée server.js
 exports.cats = cats;
