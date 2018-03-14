@@ -15,7 +15,7 @@ let catSong = document.getElementById('catSong');
 //la fonctionalité location.reload() permet de raffraichir la page et de relancer la selection aleatoire de chat
 function clickCat(event){
 
-  fetch('http://localhost:8080/catselection',
+  fetch('https://whispering-shelf-40796.herokuapp.com/catselection',
     {
       method: 'PUT',
       headers: {
